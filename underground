@@ -1,0 +1,695 @@
+$(document).ready(function(){
+
+    $('.container-graphic').mouseenter(function(){
+        
+        // $('.container-graphic').css("width", "880px", "height", "880px", 1000);
+        $('.container-graphic').css("scale", "1.4", 1000);
+
+    });
+    $('.container-graphic').mouseleave(function(){
+        
+        // $('.container-graphic').css("width", "800px", "height", "800px", 1000);
+        $('.container-graphic').css("scale", "1", 1000);
+
+    })
+})
+const ratio = .3
+var options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: ratio
+}
+const handleIntersect = function(entries, observer) {
+    entries.forEach(function(entry) {
+        if (entry.intersectionRatio > ratio) {
+            entry.target.classList.add('reveal-visible')
+            observer.unobserve(entry.target)
+        } 
+    })
+}
+
+var observer = new IntersectionObserver(handleIntersect, options)
+document.querySelectorAll('.reveal').forEach(function (r){
+    observer.observe(r)
+})
+
+const barCanvas = document.getElementById('pieCanvas');
+const barChart = new Chart(barCanvas, {
+    type: "pie",
+    data: {
+        labels: ["Angleterre", "France", "Allemagne", "Italie", "Suède" ],
+        datasets: [{
+            data: [50, 40, 30,20, 10], 
+            backgroundColor: [
+                "#cf1128",
+                "#002395",
+                "#010101",
+                "#159b62",
+                "#016aa7"
+            ],
+            border: ["none"]
+        }]
+    },
+    options: {
+        hoverOffset: 30, 
+
+        plugins: {
+            legend: {
+                labels: {
+                    font: {
+                        size: 18,   
+                    },
+                    color: "#F1F1F1",
+                    padding: 40,
+                    borderRadius: 30,
+                },
+                position: "right"
+            }
+        },
+        layout: {
+            padding: 30,
+            margin: 50,
+        } 
+    },
+})
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href='https://unpkg.com/boxicons@2.1.2/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Accueil</a></li>
+                <li><a href="https://unsplash.com/photos/Tlwrp8ThUg8">Agenda</a></li>
+                <li><a href="#">Billetterie</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+<main>
+    <div class="flot">
+        <div class="bloc-left">
+            <svg id="barre-vectical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2 385.55"><defs><style>.cls-1{fill:none;stroke:#f1f1f1;stroke-miterlimit:10;stroke-width:2px;}</style></defs><line class="cls-1" x1="1" x2="1" y2="385.55"/></svg>
+
+            <i class='bx bxl-facebook bx-rotate-270' style='color:#f1f1f1' ></i>
+            <i class='bx bxl-instagram bx-rotate-270' style='color:#f1f1f1' ></i>
+        </div>
+        <video autoplay muted="1" preload="auto" loop="1">
+            <source src="video-header.mp4" type=video/mp4>
+        </video>
+        <svg id="Calque_1" data-name="Calque 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 325.03 47.52"><defs><style>.cls-1{font-size:45.52px;fill:none;stroke:#f1f1f1;font-family:ExcellenceInMotionV-Bold, Excellence In Motion V4;font-weight:700;}.cls-2{letter-spacing:-0.02em;}.cls-3{letter-spacing:-0.01em;}.cls-4{letter-spacing:-0.03em;}.cls-5{letter-spacing:-0.02em;}.cls-6{letter-spacing:0em;}</style></defs>
+            <text class="cls-1" transform="translate(0.5 36.91)">UN<tspan class="cls-2" x="62.59" y="0">D</tspan>
+                <tspan x="91.35" y="0">E</tspan>
+                <tspan class="cls-3" x="114.93" y="0">R</tspan>
+                <tspan x="142.74" y="0">G</tspan>
+                <tspan class="cls-4" x="173.55" y="0">R</tspan>
+                <tspan class="cls-5" x="200.68" y="0">O</tspan>
+                <tspan class="cls-6" x="231.73" y="0">UND</tspan></text></svg>
+    </div>
+    <section>
+        <article class="reveal">
+            <h1>
+                La scène française à l’honneur
+            </h1>
+            <p>
+                Feel Free Records organise depuis deux ans des soirées secrètes et underground dans toute l’Ile-de-France. Ces multiples événements rencontrant un grand succès, les promoteurs ont décidé de lancer leur propre label l’année dernière.
+            </p>
+        </article>
+            <img class="one" src="img/dark-img.jpg" alt="artiste-sombre">
+            <img class="two" src="https://images.unsplash.com/photo-1589742117142-4c08de5aabcf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=687&q=80">
+    </section>
+    <section class="deux">
+         <img class="three" src="https://images.unsplash.com/photo-1524368535928-5b5e00ddc76b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2070&q=80">
+        <div class="deux-bloc">
+            <div class="deux-bloc-left">
+                <h2 class="reveal">L'influence de la musique underground en europe</h2>
+            </div>
+            <div class="deux-bloc-right">
+                <div class="container-graphic reveal">
+                    <canvas id="pieCanvas" aria-label="chart" role="img"></canvas>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="trois">
+        <div class="trois-bloc-left">
+            <div class="broom reveal"></div>
+        </div>
+        <div class="trois-bloc-right">
+            <h3>Comment Boiler Room a révolutionné le clubbing en développant les soirées en streaming</h3>
+            <p>De simple curiosité pour fêtards londoniens, Boiler Room est devenu en l’espace de neuf ans une institution de la musique électronique. Sans jamais toucher à sa formule originelle : live streamer gratuitement dans le monde entier les sets des musiciens underground du moment. Mais comment la plateforme du britannique Blaise Bellville a-t-elle conquis la planète ? Avec quel modèle financier ? En septembre 2016, Trax a demandé aux cadres du géant de la fête de répondre.</p>
+        </div>
+    </section>
+    <section class="quatre">
+        <div class="twin-bloc">
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://meoko.net/wp-content/uploads/2021/11/kumquat-bellevilloise-levietphotography-1119-img_0805_49129489433_o.jpg">
+                    <div class="date">
+                        <span class="date-top">JAN</span>
+                        <span class="date-mid">VEN</span>
+                        <span class="date-bot">14</span>
+                    </div>
+                    <div class="titre-bandeau"><li>Minimal</li></div>
+                </div>
+                <span class="titre-even">Barac</span>
+                <span class="lieu">23H.BELLEVILLOISE <span>. PARIS</span></span>
+                <div class="card-pseudo"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://www.ouest-france.fr/sites/default/files/styles/image-640/public/2018/01/18/granville-mezigue-premier-nom-devoile-des-traversees-sonores_1.jpg?itok=1024Uwj3">
+                    <div class="date">
+                        <span class="date-top">JAN</span>
+                        <span class="date-mid">SAM</span>
+                        <span class="date-bot">15</span>
+                    </div>
+                    <div class="titre-bandeau"><li>Acid house</li></div>
+                </div>
+                <span class="titre-even">Mézigue</span>
+                <span class="lieu">02H.LIEU SECRET <span>. MARSEILLE</span></span>
+                <div class="card-pseudo"></div>
+            </div>
+            
+        </div>
+        <div class="twin-bloc">
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://i0.wp.com/dynamhit.org/wp-content/uploads/2017/01/inres-concrete-dj-antigone.jpg">
+                    <div class="date">
+                        <span class="date-top">JAN</span>
+                        <span class="date-mid">SAM</span>
+                        <span class="date-bot">15</span>
+                    </div>
+                    <div class="titre-bandeau"><li>Techno</li></div>
+                </div>
+                <span class="titre-even">Antigone</span>
+                <span class="lieu">04H.CONCRETE <span>. PARIS</span></span>
+                <div class="card-pseudo"></div>
+            </div>
+
+            <div class="card">
+                <div class="card-img">
+                    <img src="https://stash-archive-master-videos.s3.amazonaws.com/assets/_MG_7596-Modifier_uMJNB9v.jpg">
+                    <div class="date">
+                        <span class="date-top">JAN</span>
+                        <span class="date-mid">SAM</span>
+                        <span class="date-bot">15</span>
+                    </div>
+                    <div class="titre-bandeau"><li>Hard dance</li></div>
+                </div>
+                <span class="titre-even">Parfait</span>
+                <span class="lieu">04H.POSSESSION <span>. PARIS</span></span>
+                <div class="card-pseudo"></div>
+            </div>
+        </div>
+    </section>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.7.1/chart.min.js"></script>
+<script src="graphic.js"></script>
+<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="anim-pie.js"></script>
+</body>
+</html>
+* {
+   margin:0;
+   padding:0;
+   box-sizing: border-box; 
+   list-style: none;
+   text-decoration: none;
+}
+
+body {
+    background-color: #121313;
+    scroll-behavior: smooth;
+}
+
+
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@900&display=swap');
+
+header {
+    width: 100%;
+    height: 70px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background-color: rgba(119, 119, 119, 0.030);
+    backdrop-filter: blur(8px);
+    z-index: 20;
+    animation: reseaux ease-in 1s;
+    
+}
+
+
+nav {
+    width: 63%;
+}
+
+ul {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+li {
+    padding: 10px;
+    cursor: pointer;
+}
+
+ul li a {
+    color: #F1F1F1;
+    font-family: 'Roboto', sans-serif;
+    font-size: 1.1rem;
+    cursor: pointer;
+    
+}
+
+main{
+    height: 100vh;
+    overflow-y: scroll;
+    scroll-snap-type: y mandatory;
+
+}
+
+.flot {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+    background-color: #000000;
+}
+
+.bloc-left {
+    position: absolute;
+    top: 10%;
+    left: 9%;
+    width: 20px;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+.bloc-left i {
+    cursor: pointer;
+    font-size: 4rem;
+    animation: reseaux ease-in 2s;  
+}
+
+@keyframes reseaux {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+
+
+
+#barre-vectical {
+    width: 2px;
+    height: 400px;
+    margin: 20px 0;
+    border-radius: 10px;
+    stroke-dasharray: 800px;
+    stroke-dashoffset: 800px;
+    animation: anim 4s cubic-bezier(.5, 0, 0, 1) forwards;
+}
+
+video {
+    cursor: none;
+    background-position: center;
+    /* position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, 0%); */
+    height: 100%;
+    width: 100%;
+    z-index: 100;
+}
+
+#Calque_1 {  /* ==>UNDERGROUND */
+    position: absolute;
+    left: 50%;
+    top: 68%;
+    transform: translate(-50%,-50%);
+    z-index: 6;
+}
+
+#Calque_1 text, tspan{
+    stroke-dasharray: 1000px;
+    stroke-dashoffset: 1000px;
+    animation: anim 6s cubic-bezier(.5, 0, 0, 1) forwards;
+}
+
+@keyframes anim {
+    to {
+        stroke-dashoffset: 0;
+    }
+}
+
+
+section {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+
+}
+
+/* ------------------ANIMATION AU SCROLL-------- */
+.reveal {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 19%;
+    left: 30%;
+    height: auto;
+    width: 35%;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+.reveal-visible {
+    opacity: 1;
+    transform: translateX(-50%);
+    transition: 1s cubic-bezier(.5, 0, 0, 1);
+}
+
+/* ------------------ANIMATION AU SCROLL-------- */
+
+h1 {
+    color: #F1F1F1;
+    font-size: 6rem;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+}
+article p {
+    margin-top: 50px;
+    color: #F1F1F1;
+    font-size: 1.6rem;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 500;
+    line-height: 56px;
+}
+
+.one {
+    background-position: center;
+    width: 60vw;
+    height: auto;
+    margin: 0 auto;
+    z-index: -10;
+}
+
+.two {
+    -webkit-filter: grayscale(100%);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 80%;
+    right: -12%;
+    border-radius: 10px;
+    background-size: 70% auto;
+
+}
+
+.deux {
+    margin: 50vh 0 0 0;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+}
+
+.three {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 107vh;
+    background-position: center;
+    background-size: auto 100%;
+    -webkit-filter: grayscale(100%);
+}
+
+.deux-bloc {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: space-between;
+    z-index: 100;
+}
+
+.deux-bloc-left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+    /* background-color: crimson; */
+    /* background-color: rgb(97, 40, 40); */
+}
+
+.deux-bloc-right {
+    width: 49%;
+    height: 100%;
+    position: relative;
+    /* background-color: blue; */
+}
+
+
+.container-graphic {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 39%;
+    top: 49%;
+    width: 900px;
+    height: 900px;
+    padding: 10%;
+    opacity: .7;
+}
+
+h2 {
+    color: #F1F1F1;
+    font-size: 5.4rem;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    left: 78%;
+    top: 12%;
+    text-align: left;
+    text-transform: uppercase;
+    opacity: 0;
+    transform: translateX(-100%);
+}
+
+
+/* ----------------------- */
+.trois {
+    margin-top: 50vh;
+    width: 100%;
+    height: 100vh;
+    scroll-snap-align: center;
+    display: flex;
+}
+
+.trois-bloc-left {
+    width: 50%;
+    height: 100%;
+    position: relative;
+}
+
+.broom {
+    background-image: url(img/boilerroom.svg);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    width: 500px;
+    height: 500px;
+    transform: rotate3d(4, 1, 1, 22deg);
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 41%;
+    left: 51%;
+}
+
+.trois-bloc-right {
+    width: 52%;
+    height: 100%;
+    padding-right: 5vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fefdfe;
+    font-family: 'Poppins', sans-serif;
+}
+
+.trois-bloc-right h3 {
+    font-size: 4.7rem;
+    margin-bottom : 14vh;
+}
+
+.trois-bloc-right p {
+    font-size: 1.4rem;
+    line-height: 2.8rem;
+}
+
+.quatre {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 100%;
+    padding-top: 10vh;
+}
+
+.twin-bloc {
+    height: 410px;
+    width: 70%;
+    /* background-color: red;
+    border:1px solid black; */
+    margin: 20px auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.card {
+    height: 95%;
+    width: 367px;
+    background-color: #F1F1F1;
+    padding: 10px;
+    position: relative;
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    border-radius: 3px 3px 0 0;
+    
+}
+
+.card-img {
+    position: relative;
+    width: 100%;
+    height: 55%;
+    /* background-image: url(https://meoko.net/wp-content/uploads/2021/11/kumquat-bellevilloise-levietphotography-1119-img_0805_49129489433_o.jpg); */
+    /* background-position: center;
+    background-size: 100% auto; */
+    transition: .3s;
+}
+
+.card-img img {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-size: 100% auto;
+    transition: .3s;
+}
+
+.date {
+    height: 89px;
+    width: 68px;
+    background-color: #F1F1F1;
+    border: 1px solid black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-align: center;
+    position: absolute;
+    left: 0;
+    top: -24px;
+}
+
+.date-top {
+    background-color: #4dcdc4;
+    padding: 5px 0 0 0;
+}
+
+.date-bot {
+    font-size: 1.7rem;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.titre-even {
+    position: absolute;
+    top: 64%;
+    left: 2.7%;
+    font-weight: bolder;
+    font-size: 1.2rem;
+    letter-spacing: 3px;
+}
+
+.titre-bandeau {
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 95%;
+    height: 33px;
+    color: #F1F1F1;
+    background-color: #161616;
+    padding-left: 3%;
+    display: flex;
+    align-items: center;
+}
+
+.titre-bandeau li {
+    list-style: inside;
+}
+
+.lieu {
+    position: absolute;
+    left: 2.7%;
+    bottom: 16px;
+    font-size: .8rem;
+}
+
+.lieu span {
+    color: #4dcdc4;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.card-pseudo {
+    
+    width: 100%;
+    height: 11px;
+    background-color: #4dcdc4;
+    position: absolute;
+    bottom: 0;
+    opacity: 0;
+    left: 0;
+    transition: .3s;
+    z-index: -10;
+}
+
+.card:hover .card-pseudo {
+    opacity: 1;
+    bottom: -9px;
+}
+.card:hover .card-img img {
+    -webkit-filter: grayscale(100%);
+}
+
+.card:hover .lieu span {
+    -webkit-filter: grayscale(100%);
+}
+
+.card:hover .date {
+    filter: none!important;
+}
+
+
+
+
